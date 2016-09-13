@@ -1,0 +1,55 @@
+[filter "lfs"]
+        clean = git-lfs clean %f
+        smudge = git-lfs smudge %f
+        required = true
+[user]
+        name = "Jack Liu "
+        email = gongxun@yahoo-inc.com
+[color]
+        ui = true
+[alias]
+    co = checkout
+    br = branch
+
+    st = status
+    sts = status -s
+    stt = status --untracked-files=no
+
+    ci = commit
+    civ = commit -v
+    cia = commit -a
+    ciav = commit -av
+
+    df = diff --no-prefix
+    dfr = diff --no-prefix --relative
+    dfc = diff --no-prefix --cached
+
+    spull = svn rebase
+    spush = svn dcommit
+
+    l1 = log -1
+    rlog = log --date=relative
+    plog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --decorate
+    palog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset' --abbrev-commit --decorate
+    lod = log --oneline --decorate
+    lg = log --graph
+    lpo = log --pretty=oneline --abbrev-commit --graph --decorate --all
+    l1 = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+    l2 = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    l3 = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    lsm = log -M --stat
+    wc = whatchanged
+
+    sh = stash
+    shp = stash pop
+
+    grepc = grep --color
+    xrevert = reset HEAD
+
+    whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
+    whatis = show -s --pretty='tformat:%h (%s, %ad)' --date=short
+
+    alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\t=> \\2/' | sort
+
+    edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; vim `f`"
+    add-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
